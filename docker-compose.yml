@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-    webapp:
+    app_network:
 
 services:
     nginx:
@@ -19,7 +19,7 @@ services:
             - php
             - mysql
         networks:
-            - webapp
+            - app_network
     php:
         build:
             context: .
@@ -32,7 +32,7 @@ services:
         ports:
             - "9001:9000"
         networks:
-            - webapp
+            - app_network
 
     mysql:
         image: mysql:latest
@@ -45,4 +45,4 @@ services:
         ports:
             - "33360:3306"
         networks:
-            - webapp
+            - app_network
