@@ -29,6 +29,7 @@ services:
             - ./:/var/www/html
         depends_on:
             - mysql
+            - postgresql
         ports:
             - "9001:9000"
         networks:
@@ -44,5 +45,21 @@ services:
             MYSQL_ROOT_PASSWORD: root_password
         ports:
             - "33360:3306"
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+        networks:
+            - app_network
+
+    postgresql:
+        image: postgres:latest
+        container_name: ${APP_NAME}_postgresql
+        environment:
+            POSTGRES_DB: your_postgres_database_name
+            POSTGRES_USER: your_postgres_user
+            POSTGRES_PASSWORD: your_postgres_password
+        ports:
+            - "54320:5432"
+        volumes:
+            - ./data/postgresql:/var/lib/postgresql/data
         networks:
             - app_network
