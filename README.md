@@ -59,6 +59,6 @@ Open your browser and go to http://localhost:8000.
    docker-compose down
 
 ## Notes
-* The project uses Nginx as a web server, PHP 8.1, MySQL and PostgreSQL.
+* The project uses Nginx as a web server, PHP 8.1, MySQL, PostgreSQL and Redis.
 * Ensure that the containers are stopped before making changes to the docker-compose.yml file.
 * Customize the Dockerfile and docker-compose.yml as needed for your specific project requirements.
