@@ -18,6 +18,7 @@ services:
         depends_on:
             - php
             - mysql
+            - redis
         networks:
             - app_network
     php:
@@ -30,6 +31,7 @@ services:
         depends_on:
             - mysql
             - postgresql
+            - redis
         ports:
             - "9001:9000"
         networks:
@@ -61,5 +63,15 @@ services:
             - "54320:5432"
         volumes:
             - ./data/postgresql:/var/lib/postgresql/data
+        networks:
+            - app_network
+
+    redis:
+        image: redis:latest
+        container_name: ${APP_NAME}_redis
+        ports:
+            - "63790:6379"
+        volumes:
+            - ./data/redis:/data
         networks:
             - app_network
